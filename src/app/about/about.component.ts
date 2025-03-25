@@ -98,8 +98,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   getImagePath() {
-    return window.location.href.includes('localhost:4200') 
-      ? 'assets/images/profile.jpg'
-      : '/assets/images/profile.jpg';
+    return 'Yasara-Madana-Portfolio/src/assets/images/profile.jpg';
   }
 } 
