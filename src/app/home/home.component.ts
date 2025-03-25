@@ -9,9 +9,23 @@ import { CommonModule } from '@angular/common';
     <div class="home-container">
       <div class="spotlight"></div>
       <div class="content">
-        <h1>Hello I'm Yasara Madana</h1>
-        <h2>Computer Science Undergraduate</h2>
-        <p>I specialize in designing efficient, innovative, and user-focused systems that solve real-world challenges. Whether it’s crafting sleek frontends, building robust backends, or integrating cutting-edge tools, I’m driven by a desire to turn ideas into reality through code. Explore my work, skills, and projects to see how I can bring value to your next venture!</p>
+        <div class="text-animation">
+          <h1>Welcome</h1>
+          <div class="typing-container">
+            <h2>I'm <span class="highlight">Yasara Madana</span></h2>
+          </div>
+          <p class="subtitle">Full Stack Developer | Computer Science Student</p>
+        </div>
+        <div class="scroll-indicator">
+          <div class="mouse">
+            <div class="wheel"></div>
+          </div>
+          <div class="arrow">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       </div>
     </div>
   `,
@@ -27,6 +41,7 @@ import { CommonModule } from '@angular/common';
       position: relative;
       overflow: hidden;
       background: transparent;
+      margin-top: -10vh;
     }
 
     .spotlight {
@@ -46,55 +61,140 @@ import { CommonModule } from '@angular/common';
       animation: moveSpotlight 8s ease-in-out infinite;
     }
 
-    @keyframes moveSpotlight {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-      25% {
-        transform: translate(10%, 10%) scale(1.1);
-      }
-      50% {
-        transform: translate(-5%, 5%) scale(1);
-      }
-      75% {
-        transform: translate(-10%, -10%) scale(1.1);
-      }
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-    }
-
     .content {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 70vh;
+    }
+
+    .text-animation {
+      margin-top: -10vh;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: 4.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      background: linear-gradient(to right, #fff, #ccc);
+      background: linear-gradient(45deg, #fff, #4a90e2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: fadeIn 1s ease-out;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
     }
 
-    h2 {
-      font-size: 2rem;
-      color: rgba(255, 255, 255, 0.8);
+    .typing-container h2 {
+      font-size: 2.8rem;
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 1rem;
-      animation: fadeIn 1s ease-out 0.3s backwards;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards 0.3s;
     }
 
-    p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.6);
-      max-width: 600px;
+    .highlight {
+      color: #4a90e2;
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #4a90e2;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    .highlight:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards 0.6s;
+    }
+
+    .scroll-indicator {
+      position: relative;
+      margin-top: auto;
       margin-bottom: 2rem;
-      animation: fadeIn 1s ease-out 0.6s backwards;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1s;
     }
 
-    @keyframes fadeIn {
+    .mouse {
+      width: 26px;
+      height: 42px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      position: relative;
+      margin: 0 auto 1rem;
+    }
+
+    .wheel {
+      width: 4px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scroll 1.5s ease infinite;
+    }
+
+    .arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .arrow span {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+      border-right: 2px solid rgba(255, 255, 255, 0.7);
+      transform: rotate(45deg);
+      animation: arrow 1.5s ease infinite;
+      opacity: 0;
+    }
+
+    .arrow span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .arrow span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes moveSpotlight {
+      0% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(10%, 10%) scale(1.1); }
+      50% { transform: translate(-5%, 5%) scale(1); }
+      75% { transform: translate(-10%, -10%) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -105,23 +205,42 @@ import { CommonModule } from '@angular/common';
       }
     }
 
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      animation: fadeIn 1s ease-out 0.9s backwards;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    .social-links a img {
-      width: 30px;
-      height: 30px;
-      transition: transform 0.3s ease;
-      filter: brightness(0) invert(1);
-      opacity: 0.8;
+    @keyframes scroll {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      100% { transform: translate(-50%, 15px); opacity: 0; }
     }
 
-    .social-links a:hover img {
-      transform: scale(1.1);
-      opacity: 1;
+    @keyframes arrow {
+      0% { opacity: 0; transform: rotate(45deg) translate(-5px, -5px); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: rotate(45deg) translate(5px, 5px); }
+    }
+
+    @media (max-width: 768px) {
+      .home-container {
+        margin-top: -5vh;
+      }
+
+      .text-animation {
+        margin-top: -5vh;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .typing-container h2 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
     }
   `]
 })
