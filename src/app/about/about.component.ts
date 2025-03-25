@@ -98,6 +98,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   getImagePath() {
-    return 'Yasara-Madana-Portfolio/src/assets/images/profile.jpg';
+    return 'assets/images/profile.jpg';
   }
 } 

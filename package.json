@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:YasaraMadana": "node dist/yasara-madana/server/server.mjs",
-    "deploy": "ng deploy --base-href=/YasaraMadana/"
+    "deploy": "ng deploy --base-href=/Yasara-Madana-Portfolio/"
   },
   "private": true,
   "dependencies": {
